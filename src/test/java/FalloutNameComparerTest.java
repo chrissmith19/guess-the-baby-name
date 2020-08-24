@@ -68,9 +68,9 @@ class FalloutNameComparerTest {
 
     private static Stream<Arguments> names(){
         return Stream.of(
-                Arguments.of("a","a",3),
+                Arguments.of("a","a",1000),
                 Arguments.of("aa","a",2),
-                Arguments.of("aa","aa",5),
+                Arguments.of("aa","aa",1000),
                 Arguments.of("l","bill",1),
                 Arguments.of("ll","bill",2),
                 Arguments.of("lll","bill",3),

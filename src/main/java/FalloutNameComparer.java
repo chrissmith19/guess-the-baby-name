@@ -9,11 +9,11 @@ import java.util.stream.Stream;
 public class FalloutNameComparer {
 
     public static int compareNames(String guessName, String realName) {
-        int bonus =0;
-        if(guessName.equals(realName)){
-            bonus=1;
+        int bonus = 0;
+        if (guessName.toLowerCase().equals(realName.toLowerCase())) {
+            return 1000;
         }
-        return nameCompareByLetters(guessName,realName)+nameCompareByPosition(guessName,realName)+bonus;
+        return nameCompareByLetters(guessName, realName) + nameCompareByPosition(guessName, realName) + bonus;
     }
 
     public static int nameCompareByLetters(String guessName, String realName) {
@@ -23,8 +23,8 @@ public class FalloutNameComparer {
         Set realKey = realNameCharacterFrequencyMap.keySet();
 
         int similarity = realKey.stream().mapToInt(letter -> {
-            int realFrequency = realNameCharacterFrequencyMap.getOrDefault(letter,0);
-            int guessFrequency = guessNameCharacterFrequencyMap.getOrDefault(letter,0);
+            int realFrequency = realNameCharacterFrequencyMap.getOrDefault(letter, 0);
+            int guessFrequency = guessNameCharacterFrequencyMap.getOrDefault(letter, 0);
 
             if (realFrequency == guessFrequency | realFrequency < guessFrequency) {
                 return realFrequency;
